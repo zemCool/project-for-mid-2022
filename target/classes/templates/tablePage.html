@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Laptop table</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+
+</head>
+<body>
+<div align = "center" >
+    <h3><a  th:href="@{'/newLaptop'}">add new laptop</a></h3>
+</div>
+
+<table class="table table-warning table-striped">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Model</th>
+        <th scope="col">Price</th>
+        <th scope="col">CPU</th>
+        <th scope="col">edit</th>
+        <th scope="col">delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="laptop : ${laptopList} ">
+        <td th:text="${laptop.laptopId}"></td>
+        <td th:text="${laptop.brand}"></td>
+        <td th:text="${laptop.model}"></td>
+        <td th:text="${laptop.price}"></td>
+        <td th:text="${laptop.CPU}"></td>
+        <td>
+            <a th:href="@{'/edit/' + ${laptop.laptopId}}">edit</a>
+        </td>
+        <td>
+            <a th:href="@{'/delete/' + ${laptop.laptopId}}">delete</a>
+        </td>
+
+    </tr>
+
+    </tbody>
+</table>
+
+<div align = "center" >
+    <h3><a  th:href="@{'/'}">get home page</a></h3>
+</div>
+
+</body>
+</html>
